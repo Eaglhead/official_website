@@ -69,10 +69,11 @@ header .header-select {
 }
 header .title {
   display: inline-block;
-  padding: 10px 20px;
-  border-bottom: 2px solid #cccccc;
-  margin-top: 50px;
+  padding: 0.625em 1.25em;
+  border-bottom: 0.125em solid #cccccc;
+  margin-top: 3.125em;
   text-transform: capitalize;
+  font-size: 1.125em;
 }
 .view_body {
   flex: 1;
@@ -82,7 +83,7 @@ footer {
   min-height: 15%;
 }
 footer .footer_header {
-  height: 25px;
+  height: 1.5625em;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -97,7 +98,7 @@ footer .footer_header {
   text-transform: capitalize;
 }
 .el-icon-arrow-down {
-  font-size: 12px;
+  font-size: 0.75em;
   text-transform: capitalize;
 }
 </style>
@@ -136,8 +137,13 @@ export default {
       ]
     };
   },
-  mounted() {},
+  mounted() {
+    this.get_route_name();
+  },
   methods: {
+    get_route_name() {
+      this.title = this.$route.name;
+    },
     click(e) {
       window.console.log(e);
       this.title = e.target.textContent;

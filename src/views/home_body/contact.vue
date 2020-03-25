@@ -72,7 +72,7 @@
 }
 article {
   text-align: left;
-  padding: 20px 150px;
+  padding: 1.25em 9.375em;
 }
 .left,
 .right {
@@ -91,14 +91,14 @@ article {
   text-transform: capitalize;
 }
 .title {
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: 600;
   text-transform: capitalize;
 }
 .map {
-  height: 200px;
-  width: 400px;
-  border: 1px solid #000000;
+  height: 13em;
+  width: 20em;
+  border: 0.0625em solid #000000;
   margin: 1.33em 0;
 }
 .input {
