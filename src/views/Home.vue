@@ -6,7 +6,7 @@
           v-for="(item, index) in select_data"
           :key="index"
           @click.native="click"
-          :show-timeout=150
+          :show-timeout="150"
         >
           <span class="el-dropdown-link">{{item.name}}</span>
           <el-dropdown-menu slot="dropdown" @click.native="click">
@@ -19,7 +19,7 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-      <div class="title">{{title}}</div>
+      <div class="title" v-if="title != ''">{{title}}</div>
     </header>
     <router-view class="view_body"></router-view>
     <footer>
@@ -28,7 +28,7 @@
           v-for="(item, index) in select_data"
           :key="index"
           @click.native="click"
-          :show-timeout=150
+          :show-timeout="150"
         >
           <span class="el-dropdown-link">{{item.name}}</span>
           <el-dropdown-menu slot="dropdown" @click.native="click">
@@ -58,6 +58,7 @@
   flex-flow: column;
 }
 header {
+  background-color: #eeeeee;
   min-height: 15%;
   width: 100%;
 }
@@ -77,9 +78,10 @@ header .title {
 }
 .view_body {
   flex: 1;
-  background-color: #eeeeee;
+  /* background-color: #ffffff; */
 }
 footer {
+  background-color: #eeeeee;
   min-height: 15%;
 }
 footer .footer_header {
@@ -142,13 +144,18 @@ export default {
   },
   methods: {
     get_route_name() {
-      this.title = this.$route.name;
+      if(this.$route.name == 'home_body') {
+        this.title = '';
+      } else {
+        this.title = this.$route.name;
+      }
     },
     click(e) {
       window.console.log(e);
       this.title = e.target.textContent;
       window.console.log(this.title);
       if(this.title == 'home'){
+        this.title = '';
         this.$router.push(
           {
             name: 'home_body',
@@ -162,7 +169,7 @@ export default {
               id: this.title
             }
           }
-        );
+        ).catch(data => { window.console.log(data) });
       }
       
     }
